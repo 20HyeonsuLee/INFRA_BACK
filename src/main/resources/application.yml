@@ -1,17 +1,36 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:testdb;MODE=MySQL
-    username: sa
-    password:
-  h2:
+  servlet:
+    multipart:
+      max-file-size: 10MB      # 단일 파일의 최대 크기
+      max-request-size: 30MB   # 전체 요청의 최대 크기
+  cache:
+    type: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  sql:
+    init:
+      mode: always  # 이 줄 추가
+  h2:    # H2 데이터베이스 설정 추가 (필요한 경우)
     console:
       enabled: true
       path: /h2-console
-  jpa:
-    hibernate:
-      ddl-auto: create # 또는 update, create-drop, validate, none
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-        format_sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+jwt:
+  secret-key: EXAMPLE7A3E4F37B3DAD9CD8KEY6AA4B1AF7123!@#
+  access-token:
+    expiration-time: 600000
+
