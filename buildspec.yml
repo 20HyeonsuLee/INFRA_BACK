@@ -23,7 +23,6 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Copying built files...
-      - cp build/libs/*.jar ./application.jar
 
 artifacts:
   files:
