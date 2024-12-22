@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       java: corretto17
     commands:
-      - echo "Installing Java 17..."
+      - echo "Installinafdsafsfsㄹㅇㅁㄹㄴㅁㄹㄴㅁㄹ Java 17..."
       - java -version    # Java 버전 확인용
 
   pre_build:
