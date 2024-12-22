@@ -3,27 +3,28 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto11    # 또는 corretto17, corretto8
+      java: corretto11
 
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - echo Build started on `date`
+      - echo Starting pre-build phase...
 
   build:
     commands:
-      - echo Build started on `date`
-      - chmod +x ./gradlew  # 실행 권한 부여
-      - ./gradlew clean build -x test  # 테스트 제외하고 빌드
+      - echo Building the application...
+      - chmod +x ./gradlew
+      - ./gradlew clean build -x test
 
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Copying built files...
+      - cp build/libs/*.jar ./application.jar
 
 artifacts:
   files:
-    - imagedefinitions.json
-    - build/libs/*.jar
+    - application.jar
     - scripts/**
     - appspec.yml
   discard-paths: no
