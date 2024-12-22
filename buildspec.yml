@@ -3,7 +3,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto17    # Java 11에서 17로 변경
+      java: corretto17
+    commands:
+      - echo "Installing Java 17..."
+      - java -version    # Java 버전 확인용
 
   pre_build:
     commands:
@@ -14,7 +17,7 @@ phases:
     commands:
       - echo Building the application...
       - chmod +x ./gradlew
-      - ./gradlew clean build -x test
+      - ./gradlew clean build -x test --info    # --info 추가하여 자세한 로그 확인
 
   post_build:
     commands:
