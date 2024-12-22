@@ -26,6 +26,7 @@ phases:
 
 artifacts:
   files:
+    - build/libs/*.jar    # 실제 JAR 파일이 생성되는 위치
     - application.jar
     - scripts/**
     - appspec.yml
