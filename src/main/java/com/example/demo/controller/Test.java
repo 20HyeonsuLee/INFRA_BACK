@@ -31,6 +31,6 @@ public class Test {
     @GetMapping("/infra-study/test")
     public String test() {
         List<Member> members = memberRepository.findAll();
-        return members.stream().findFirst().get().getName();
+        return null;
     }
 }
