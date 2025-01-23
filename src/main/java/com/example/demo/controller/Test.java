@@ -21,6 +21,7 @@ import com.example.demo.repository.MemberRepository;
 @Transactional(readOnly = true)
 public class Test {
 
+
     private final MemberRepository memberRepository;
 
     public Test(MemberRepository memberRepository) {
