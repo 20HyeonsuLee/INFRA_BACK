@@ -22,6 +22,8 @@ import com.example.demo.repository.MemberRepository;
 public class Test {
 
 
+
+
     private final MemberRepository memberRepository;
 
     public Test(MemberRepository memberRepository) {
